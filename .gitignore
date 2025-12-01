@@ -1,0 +1,22 @@
+# PlatformIO files
+.pio/
+platformio.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.elf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*~
+*.bak
