@@ -101,3 +101,5 @@ int Repartidor::getLimiteEnvios() {
 void Repartidor::setLimiteEnvios(int cLimiteEnvios) {
     this->limiteEnvios = cLimiteEnvios;
 }
+
+Repartidor::~Repartidor(){}
