@@ -101,4 +101,9 @@ void Repartidor::setLimiteEnvios(int cLimiteEnvios) {
     this->limiteEnvios = cLimiteEnvios;
 }
 
+bool Repartidor::operator==(const Envio &other) const {
+    return this->identificacion == other.identificacion;
+}
+
+
 

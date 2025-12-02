@@ -38,6 +38,8 @@ public:
     bool estaDisponible(); // Revisa si los envios del repartidor no exceden su limite de envios
     void imprimir(); // Imprime los datos de la instancia de Repartidor
 
+    bool operator==(const Envio& other) const; //sobrecarga del operador
+
     // Destructor
     ~Repartidor();
 };
