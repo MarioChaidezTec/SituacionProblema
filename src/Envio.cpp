@@ -36,8 +36,8 @@ string Envio::getEstado() {
     return this -> estado;
 }
 
-int Envio::getProductos() {
-    return this -> productos.size();
+vector<Producto> Envio::getProductos() {
+    return this -> productos;
 }
 
 int Envio::getCantidad() {

@@ -26,7 +26,7 @@ public:
     // Getters
     string getId();
     string getEstado();
-    int getProductos();
+    vector<Producto> getProductos();
     int getCantidad();
     Cliente getCliente();
     string getRepartidor();

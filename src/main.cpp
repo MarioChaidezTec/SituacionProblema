@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "Cliente.h"
+#include "Producto.h"
 using namespace std;
 
 Repartidor repartidor1;
@@ -25,8 +26,6 @@ void crearEnvio() { //funcion para crear envio
     string id;
     cout << "Ingrese una id: ";
     cin >> id;
-    string estado;
-    estado = "No completado";
 
     string nombreCliente;
     cout << "Ingrese el nombre del cliente: ";
@@ -39,7 +38,7 @@ void crearEnvio() { //funcion para crear envio
     cin >> telefonoCliente;
 
     Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
-    Envio envio(id,estado, {}, {},repartidor1, cliente);
+    Envio envio(id, {}, {},repartidor1, cliente);
     envios.push_back(envio);
 }
 
@@ -61,6 +60,35 @@ void agregarProducto() {
             cout << "Productos agregados" << endl;
         }
         else cout << "No se encuentra el ID del envio" << endl;
+    }
+}
+
+void eliminarProducto() {
+    for (auto& envio : envios) {
+        int i = 1;
+        cout << "Envio: " << i << " ID: " << envio.getId() << endl;
+        i++;
+    }
+    string id;
+    cout << "Escribe el id del envio: " << endl;
+    cin >> id;
+    for (auto& envio : envios) {
+        if (envio.getId() == id) {
+            int i = 1;
+            for (auto& producto : envio.getProductos()) {
+                cout << i << "." << producto.getNombre() << endl;
+                i++;
+            }
+            string nombre;
+            cout << "Ingrese el numero del producto a eliminar " << endl;
+            cin >> nombre;
+            for (auto& producto : envio.getProductos()) {
+                if (producto.getNombre() == nombre) {
+                    envio.eliminarProducto(nombre);
+                    cout << "Producto eliminado" << endl;
+                }else cout << "Producto no encontrado" << endl;
+            }
+        }else cout << "No se encuentra el ID del envio" << endl;
     }
 }
 
@@ -118,7 +146,11 @@ int main(){
                 break;
             case 2: agregarProducto();
                 break;
+            case 3: eliminarProducto();
+                break;
             case 4: mostrarInfo();
+                break;
+            case 5: cambiarEstado();
                 break;
             default: cout << "Opcion invalida" << endl;
         }
