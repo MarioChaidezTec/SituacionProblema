@@ -20,7 +20,7 @@ private:
 public:
     // Constructores
     Envio();
-    Envio(string cId, string cEstado, vector<Producto> cProductos,
+    Envio(string cId, vector<Producto> cProductos,
           vector<int> cCantidad, Repartidor& cRepartidor, Cliente cCliente);
 
     // Getters
