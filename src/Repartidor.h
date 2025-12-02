@@ -14,6 +14,8 @@ private:
     string placaVehiculo;
     vector <Envio> listaEnvios;
     int limiteEnvios;
+
+    int Repartidor::estaEnvio(Envio& envio);
 public:
     // Constructores
     Repartidor(); // Default
