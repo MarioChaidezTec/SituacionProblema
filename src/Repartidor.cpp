@@ -102,4 +102,8 @@ void Repartidor::setLimiteEnvios(int cLimiteEnvios) {
     this->limiteEnvios = cLimiteEnvios;
 }
 
+vector<Envio> Repartidor::getListaEnvios(){
+    return this->listaEnvios;
+}
+
 Repartidor::~Repartidor(){}

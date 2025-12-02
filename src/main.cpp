@@ -8,6 +8,7 @@ using namespace std;
 
 Repartidor repartidor1;
 vector<Envio> envios;
+vector<Repartidor> repartidores;
 
 void mostrarMenu() { //muestra el menu de gestion
     cout << "********** MENU DE GESTION DE ENVIOS **********" << endl;
@@ -80,6 +81,30 @@ void mostrarInfo() {
     }
 }
 
+void cambiarEstado(){
+    for (auto& repartidor: repartidores){
+        cout << "Seleccione la ID de un repartidor" << endl;
+        cout << repartidor.getNombre() << " ID: " << repartidor.getIdentificacion();
+    }
+    string id;
+    cin >> id;
+    for(auto& repartidor: repartidores){
+        if (repartidor.getIdentificacion() == id){
+            cout << "Envios asignados al repartidor" << endl;
+            for (auto& envio :repartidor.getListaEnvios()) {
+                int i = 1;
+                cout << "Envio: " << i << " ID: " << envio.getId() << endl;
+            }
+            string idEnvio;
+            cout << "Seleccione el envio a entregar: " << endl; cin >> idEnvio;
+            for (auto& envio : repartidor.getListaEnvios()){
+                if (idEnvio == envio.getId()){
+                    repartidor.entregarEnvio(idEnvio);
+                } else cout << "Envio no encontrado" << endl;
+            }
+        } else cout << "Repartidor no encontrado" << endl;
+    }
+}
 
 int main(){
 
