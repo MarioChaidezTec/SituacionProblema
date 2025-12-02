@@ -14,17 +14,17 @@ Envio::Envio() {
     this -> estado = " ";
     this -> productos;
     this -> cantidad;
-    this -> repartidor;
+    this -> idRepartidor = " ";
     this -> cliente;
 }
 
 Envio::Envio(string cId, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
-             Repartidor cRepartidor, Cliente cCliente) {
+             Repartidor& cRepartidor, Cliente cCliente) {
     this -> id = cId;
     this -> estado = cEstado;
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
-    this -> repartidor = cRepartidor;
+    this -> idRepartidor = cRepartidor.getIdentificacion();
     this -> cliente = cCliente;
 }
 
@@ -36,16 +36,16 @@ string Envio::getEstado() {
     return this -> estado;
 }
 
-vector<Producto> Envio::getProductos() {
-    return this -> productos;
+int Envio::getProductos() {
+    return this -> productos.size();
 }
 
-vector<int> Envio::getCantidad() {
-    return this -> cantidad;
+int Envio::getCantidad() {
+    return this -> cantidad.size();
 }
 
-Repartidor Envio::getRepartidor() {
-    return this -> repartidor;
+string Envio::getRepartidor() {
+    return this -> idRepartidor;
 }
 
 Cliente Envio::getCliente() {
@@ -64,8 +64,8 @@ void Envio::setCantidad(vector<int> cCantidad) {
     this -> cantidad = cCantidad;
 }
 
-void Envio::setRepartidor(Repartidor cRepartidor) {
-    this -> repartidor = cRepartidor;
+void Envio::setRepartidor(Repartidor& cRepartidor) {
+    this -> idRepartidor = cRepartidor.getIdentificacion();
 }
 
 void Envio::setCliente(Cliente cCliente) {
@@ -123,7 +123,7 @@ void Envio::mostrarinfo() {
         cout << productos[i].getNombre() << "," << productos[i].getPrecio() << endl;
         cout << "Existen" << cantidad[i] << " unidades de este producto" << endl;
     }
-    cout << "El repartidor encargado de este envio es: " << repartidor.getNombre() << endl;
+    cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
 

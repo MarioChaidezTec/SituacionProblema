@@ -3,8 +3,9 @@
 
 #include <string>
 #include <vector>
-#include "Envio.h"
 using namespace std;
+
+class Envio; 
 
 class Repartidor{
 private:
@@ -15,7 +16,7 @@ private:
     vector <Envio> listaEnvios;
     int limiteEnvios;
 
-    int Repartidor::estaEnvio(string id); // Comprueba si existe el envio dado y regresa el indice de la lista
+    int estaEnvio(string id); // Comprueba si existe el envio dado y regresa el indice de la lista
 public:
     // Constructores
     Repartidor(); // Default
