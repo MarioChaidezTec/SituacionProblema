@@ -20,8 +20,8 @@ private:
 public:
     // Constructores
     Envio();
-    Envio(string cId, string cEstado, vector<Producto> cProductos,
-          vector<int> cCantidad, Repartidor& cRepartidor, Cliente cCliente);
+    Envio(string cIdEnvio, vector<Producto> cProductos,
+          vector<int> cCantidad, Repartidor cRepartidor, Cliente cCliente);
 
     // Getters
     string getId();

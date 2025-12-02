@@ -10,18 +10,18 @@
 using namespace std;
 
 Envio::Envio() {
-    this -> id = " ";
-    this -> estado = " ";
+    this -> idEnvio = " ";
+    this -> estado = "No entregado";
     this -> productos;
     this -> cantidad;
     this -> idRepartidor = " ";
     this -> cliente;
 }
 
-Envio::Envio(string cId, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
-             Repartidor& cRepartidor, Cliente cCliente) {
-    this -> id = cId;
-    this -> estado = cEstado;
+Envio::Envio(string cIdEnvio, vector<Producto> cProductos, vector<int> cCantidad,
+             Repartidor cRepartidor, Cliente cCliente) {
+    this -> idEnvio = cIdEnvio;
+    this -> estado = "No entregado";
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
     this -> idRepartidor = cRepartidor.getIdentificacion();
@@ -118,14 +118,16 @@ int Envio::leerFichero(string fichero) {
 void Envio::mostrarinfo() {
     cout << "El ID del envio es : " << this -> id << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
-
+    cout << "Productos" << endl;
+    cout << "-------------" << endl;
     for (int i = 0; i < productos.size(); i++){
         cout << productos[i].getNombre() << endl;
         cout << "Precio unitario: " << productos[i].getPrecio() << endl;
         cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
     }
-
-    cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
+    cout << "-------------" << endl;
+    cout << "El costo total del envio es" << calculartotal() << endl;
+    cout << "El repartidor encargado de este envio es: " << repartidor.getNombre() << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
 
