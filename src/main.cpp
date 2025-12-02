@@ -58,14 +58,29 @@ void agregarProducto() {
             cin >> fichero;
             envio.leerFichero(fichero);
             cout << "Productos agregados" << endl;
-        }else cout << "No se encuentra el ID del envio" << endl;
+        }
+        else cout << "No se encuentra el ID del envio" << endl;
     }
 }
 
-void mostrarInfo
-
-void eliminarProducto() {
+void mostrarInfo() {
+    for (auto& envio : envios) {
+        int i = 1;
+        cout << "Envio: " << i << " ID: " << envio.getId() << endl;
+        i++;
+    }
+    string id;
+    cout << "Escribe el id del envio: " << endl;
+    cin >> id;
+    for (auto& envio : envios) {
+        if (envio.getId() == id) {
+            envio.mostrarinfo();
+        }
+        else cout << "No se encuentra el ID del envio" << endl;
+    }
 }
+
+
 int main(){
 
     int opcion = 0;
@@ -77,6 +92,8 @@ int main(){
             case 1: crearEnvio();
                 break;
             case 2: agregarProducto();
+                break;
+            case 4: mostrarInfo();
                 break;
             default: cout << "Opcion invalida" << endl;
         }
