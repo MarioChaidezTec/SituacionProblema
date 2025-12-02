@@ -1,7 +1,3 @@
-//
-// Created by gusco on 12/1/2025.
-//
-
 #include "Envio.h"
 #include <string>
 #include <vector>
@@ -14,7 +10,7 @@
 using namespace std;
 
 Envio::Envio() {
-    this -> idEnvio = " ";
+    this -> id = " ";
     this -> estado = " ";
     this -> productos;
     this -> cantidad;
@@ -22,9 +18,9 @@ Envio::Envio() {
     this -> cliente;
 }
 
-Envio::Envio(string cIdEnvio, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
+Envio::Envio(string cId, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
              Repartidor cRepartidor, Cliente cCliente) {
-    this -> idEnvio = cIdEnvio;
+    this -> id = cId;
     this -> estado = cEstado;
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
@@ -32,8 +28,8 @@ Envio::Envio(string cIdEnvio, string cEstado, vector<Producto> cProductos, vecto
     this -> cliente = cCliente;
 }
 
-string Envio::getIdEnvio() {
-    return this -> idEnvio;
+string Envio::getId() {
+    return this -> id;
 }
 
 string Envio::getEstado() {
@@ -56,8 +52,8 @@ Cliente Envio::getCliente() {
     return this -> cliente;
 }
 
-void Envio::setIdEnvio(string cIdEnvio) {
-    this -> idEnvio = cIdEnvio;
+void Envio::setId(string cId) {
+    this -> id = cId;
 }
 
 void Envio::setProductos(vector<Producto> cProducto) {
@@ -120,7 +116,7 @@ int Envio::leerFichero(string fichero) {
 }
 
 void Envio::mostrarinfo() {
-    cout << "El ID del envio es : " << this -> idEnvio << endl;
+    cout << "El ID del envio es : " << this -> id << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
 
     for (int i = 0; i < productos.size(); i++){

@@ -1,7 +1,3 @@
-//
-// Created by gusco on 12/1/2025.
-//
-
 #ifndef SITUACIONPROBLEMA_ENVIO_H
 #define SITUACIONPROBLEMA_ENVIO_H
 
@@ -14,7 +10,7 @@ using namespace std;
 
 class Envio {
 private:
-    string idEnvio;
+    string id;
     string estado;
     vector<Producto> productos;
     vector<int> cantidad;
@@ -23,11 +19,11 @@ private:
 public:
     // Constructores
     Envio();
-    Envio(string cIdEnvio, string cEstado, vector<Producto> cProductos,
+    Envio(string cId, string cEstado, vector<Producto> cProductos,
           vector<int> cCantidad, Repartidor cRepartidor, Cliente cCliente);
 
     // Getters
-    string getIdEnvio();
+    string getId();
     string getEstado();
     vector<Producto> getProductos();
     vector<int> getCantidad();
@@ -35,7 +31,7 @@ public:
     Repartidor getRepartidor();
 
     // Setters
-    void setIdEnvio(string cIdEnvio);
+    void setId(string cId);
     void setProductos(vector<Producto> cProducto);
     void setCantidad(vector<int> cCantidad);
     void setCliente(Cliente cCliente);
