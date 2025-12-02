@@ -11,17 +11,17 @@ using namespace std;
 
 Envio::Envio() {
     this -> id = " ";
-    this -> estado = " ";
+    this -> estado = "No entregado";
     this -> productos;
     this -> cantidad;
     this -> idRepartidor = " ";
     this -> cliente;
 }
 
-Envio::Envio(string cId, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
+Envio::Envio(string cId, vector<Producto> cProductos, vector<int> cCantidad,
              Repartidor& cRepartidor, Cliente cCliente) {
     this -> id = cId;
-    this -> estado = cEstado;
+    this -> estado = "No entregado";
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
     this -> idRepartidor = cRepartidor.getIdentificacion();
