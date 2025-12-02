@@ -15,17 +15,17 @@ using namespace std;
 
 Envio::Envio() {
     this -> idEnvio = " ";
-    this -> estado = " ";
+    this -> estado = "No entregado";
     this -> productos;
     this -> cantidad;
     this -> repartidor;
     this -> cliente;
 }
 
-Envio::Envio(string cIdEnvio, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
+Envio::Envio(string cIdEnvio, vector<Producto> cProductos, vector<int> cCantidad,
              Repartidor cRepartidor, Cliente cCliente) {
     this -> idEnvio = cIdEnvio;
-    this -> estado = cEstado;
+    this -> estado = "No entregado";
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
     this -> repartidor = cRepartidor;
@@ -122,11 +122,14 @@ int Envio::leerFichero(string fichero) {
 void Envio::mostrarinfo() {
     cout << "El ID del envio es : " << this -> idEnvio << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
-
+    cout << "Productos" << endl;
+    cout << "-------------" << endl;
     for (int i = 0; i < productos.size(); i++){
         cout << productos[i].getNombre() << "," << productos[i].getPrecio() << endl;
         cout << "Existen" << cantidad[i] << " unidades de este producto" << endl;
     }
+    cout << "-------------" << endl;
+    cout << "El costo total del envio es" << calculartotal() << endl;
     cout << "El repartidor encargado de este envio es: " << repartidor.getNombre() << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
