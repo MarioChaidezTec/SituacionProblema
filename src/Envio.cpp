@@ -118,15 +118,17 @@ int Envio::leerFichero(string fichero) {
 void Envio::mostrarinfo() {
     cout << "El ID del envio es : " << this -> id << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
-
+    cout << "Productos" << endl;
+    cout << "-------------------";
     for (int i = 0; i < productos.size(); i++){
         cout << productos[i].getNombre() << endl;
         cout << "Precio unitario: " << productos[i].getPrecio() << endl;
         cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
     }
-
+    cout << "-------------------" << endl;
     cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
+    cout << "El costo total de este envio es: " << calculartotal() << " Pesos" << endl;
 }
 
 Envio::~Envio() {}
