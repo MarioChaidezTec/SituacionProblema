@@ -72,8 +72,11 @@ void eliminarProducto() {
     string id;
     cout << "Escribe el id del envio: " << endl;
     cin >> id;
+
+    bool envioEncontrado = false; 
     for (auto& envio : envios) {
         if (envio.getId() == id) {
+            bool envioEncontrado = true;
             int i = 1;
             for (auto& producto : envio.getProductos()) {
                 cout << i << "." << producto.getNombre() << endl;
@@ -82,14 +85,19 @@ void eliminarProducto() {
             string nombre;
             cout << "Ingrese el numero del producto a eliminar " << endl;
             cin >> nombre;
+
+            bool productoEncontrado = false; 
             for (auto& producto : envio.getProductos()) {
                 if (producto.getNombre() == nombre) {
+                    bool productoEncontrado = true;
                     envio.eliminarProducto(nombre);
                     cout << "Producto eliminado" << endl;
-                }else cout << "Producto no encontrado" << endl;
+                }
             }
-        }else cout << "No se encuentra el ID del envio" << endl;
+            if (!productoEncontrado) cout << "Producto no encontrado" << endl;
+        }
     }
+    if (!envioEncontrado) cout << "Envio no encontrado" << endl; 
 }
 
 void mostrarInfo() {
@@ -116,8 +124,11 @@ void cambiarEstado(){
     }
     string id;
     cin >> id;
+
+    bool repartidorEncontrado = false;
     for(auto& repartidor: repartidores){
         if (repartidor.getIdentificacion() == id){
+            repartidorEncontrado = true;
             cout << "Envios asignados al repartidor" << endl;
             for (auto& envio :repartidor.getListaEnvios()) {
                 int i = 1;
@@ -125,13 +136,19 @@ void cambiarEstado(){
             }
             string idEnvio;
             cout << "Seleccione el envio a entregar: " << endl; cin >> idEnvio;
+            
+            bool envioEncontrado = false;
             for (auto& envio : repartidor.getListaEnvios()){
                 if (idEnvio == envio.getId()){
+                    envioEncontrado = true;
                     repartidor.entregarEnvio(idEnvio);
-                } else cout << "Envio no encontrado" << endl;
+                    cout << "Envio entregado" << endl;
+                } 
             }
-        } else cout << "Repartidor no encontrado" << endl;
+            if (!envioEncontrado) cout << "Envio no encontrado" << endl;
+        }  
     }
+    if (!repartidorEncontrado) cout << "Repartidor no encontrado" << endl;
 }
 
 int main(){
