@@ -1,6 +1,7 @@
 #include "Repartidor.h"
 #include "Envio.h"
 #include <iostream>
+#include <string>
 #include <vector>
 using namespace std;
 
@@ -46,17 +47,8 @@ void imprimir(){
     for (auto &e : this->listaEnvios) {
         e.mostrarInfo();
     }
-}//
-// Created by luis1 on 01/12/2025.
-//
+}
 
-#include "Repartidor.h"
-#include "Envio.h"
-#include <string>
-#include <iostream>
-using namespace std;
-
-//constructores
 Repartidor::Repartidor() {
     this->nombre = "";
     this->identificacion = "";
@@ -74,7 +66,6 @@ Repartidor::Repartidor(string cNombre, string cIdentificacion, string cModeloVeh
     this->limiteEnvios = cLimiteEnvios;
 }
 
-//getters y setters
 string Repartidor::getNombre() {
     return this->nombre;
 }
