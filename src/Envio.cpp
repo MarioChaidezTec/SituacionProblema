@@ -103,7 +103,20 @@ void Envio::cambiarEstado(string cEstado) {
 }
 
 int Envio::leerFichero(string fichero) {
+    ifstream archivo(fichero);
+    if (!archivo.is_open()){
+        cout << "El archivo no se pudo abrir, porfavor utilize un archivo valido" << endl;
+        return -1;
+    }
+    string nombre;
+    float precio;
+    int cantidad1;
 
+    while (archivo >> nombre >> precio >> cantidad1){
+        productos.emplace_back(nombre, precio);
+        cantidad.push_back(cantidad1);
+    }
+    return 1;
 }
 
 void Envio::mostrarinfo() {
@@ -117,3 +130,5 @@ void Envio::mostrarinfo() {
     cout << "El repartidor encargado de este envio es: " << repartidor.getNombre() << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
+
+Envio::~Envio() {}
