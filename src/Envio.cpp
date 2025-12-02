@@ -1,7 +1,3 @@
-//
-// Created by gusco on 12/1/2025.
-//
-
 #include "Envio.h"
 #include <string>
 #include <vector>
@@ -18,7 +14,7 @@ Envio::Envio() {
     this -> estado = "No entregado";
     this -> productos;
     this -> cantidad;
-    this -> repartidor;
+    this -> idRepartidor = " ";
     this -> cliente;
 }
 
@@ -28,36 +24,36 @@ Envio::Envio(string cIdEnvio, vector<Producto> cProductos, vector<int> cCantidad
     this -> estado = "No entregado";
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
-    this -> repartidor = cRepartidor;
+    this -> idRepartidor = cRepartidor.getIdentificacion();
     this -> cliente = cCliente;
 }
 
-string Envio::getIdEnvio() {
-    return this -> idEnvio;
+string Envio::getId() {
+    return this -> id;
 }
 
 string Envio::getEstado() {
     return this -> estado;
 }
 
-vector<Producto> Envio::getProductos() {
-    return this -> productos;
+int Envio::getProductos() {
+    return this -> productos.size();
 }
 
-vector<int> Envio::getCantidad() {
-    return this -> cantidad;
+int Envio::getCantidad() {
+    return this -> cantidad.size();
 }
 
-Repartidor Envio::getRepartidor() {
-    return this -> repartidor;
+string Envio::getRepartidor() {
+    return this -> idRepartidor;
 }
 
 Cliente Envio::getCliente() {
     return this -> cliente;
 }
 
-void Envio::setIdEnvio(string cIdEnvio) {
-    this -> idEnvio = cIdEnvio;
+void Envio::setId(string cId) {
+    this -> id = cId;
 }
 
 void Envio::setProductos(vector<Producto> cProducto) {
@@ -68,8 +64,8 @@ void Envio::setCantidad(vector<int> cCantidad) {
     this -> cantidad = cCantidad;
 }
 
-void Envio::setRepartidor(Repartidor cRepartidor) {
-    this -> repartidor = cRepartidor;
+void Envio::setRepartidor(Repartidor& cRepartidor) {
+    this -> idRepartidor = cRepartidor.getIdentificacion();
 }
 
 void Envio::setCliente(Cliente cCliente) {
@@ -120,13 +116,14 @@ int Envio::leerFichero(string fichero) {
 }
 
 void Envio::mostrarinfo() {
-    cout << "El ID del envio es : " << this -> idEnvio << endl;
+    cout << "El ID del envio es : " << this -> id << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
     cout << "Productos" << endl;
     cout << "-------------" << endl;
     for (int i = 0; i < productos.size(); i++){
-        cout << productos[i].getNombre() << "," << productos[i].getPrecio() << endl;
-        cout << "Existen" << cantidad[i] << " unidades de este producto" << endl;
+        cout << productos[i].getNombre() << endl;
+        cout << "Precio unitario: " << productos[i].getPrecio() << endl;
+        cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
     }
     cout << "-------------" << endl;
     cout << "El costo total del envio es" << calculartotal() << endl;
