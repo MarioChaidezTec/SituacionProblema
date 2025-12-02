@@ -1,7 +1,3 @@
-//
-// Created by gusco on 12/1/2025.
-//
-
 #include "Envio.h"
 #include <string>
 #include <vector>
@@ -14,50 +10,50 @@
 using namespace std;
 
 Envio::Envio() {
-    this -> idEnvio = " ";
+    this -> id = " ";
     this -> estado = " ";
     this -> productos;
     this -> cantidad;
-    this -> repartidor;
+    this -> idRepartidor = " ";
     this -> cliente;
 }
 
-Envio::Envio(string cIdEnvio, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
-             Repartidor cRepartidor, Cliente cCliente) {
-    this -> idEnvio = cIdEnvio;
+Envio::Envio(string cId, string cEstado, vector<Producto> cProductos, vector<int> cCantidad,
+             Repartidor& cRepartidor, Cliente cCliente) {
+    this -> id = cId;
     this -> estado = cEstado;
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
-    this -> repartidor = cRepartidor;
+    this -> idRepartidor = cRepartidor.getIdentificacion();
     this -> cliente = cCliente;
 }
 
-string Envio::getIdEnvio() {
-    return this -> idEnvio;
+string Envio::getId() {
+    return this -> id;
 }
 
 string Envio::getEstado() {
     return this -> estado;
 }
 
-vector<Producto> Envio::getProductos() {
-    return this -> productos;
+int Envio::getProductos() {
+    return this -> productos.size();
 }
 
-vector<int> Envio::getCantidad() {
-    return this -> cantidad;
+int Envio::getCantidad() {
+    return this -> cantidad.size();
 }
 
-Repartidor Envio::getRepartidor() {
-    return this -> repartidor;
+string Envio::getRepartidor() {
+    return this -> idRepartidor;
 }
 
 Cliente Envio::getCliente() {
     return this -> cliente;
 }
 
-void Envio::setIdEnvio(string cIdEnvio) {
-    this -> idEnvio = cIdEnvio;
+void Envio::setId(string cId) {
+    this -> id = cId;
 }
 
 void Envio::setProductos(vector<Producto> cProducto) {
@@ -68,8 +64,8 @@ void Envio::setCantidad(vector<int> cCantidad) {
     this -> cantidad = cCantidad;
 }
 
-void Envio::setRepartidor(Repartidor cRepartidor) {
-    this -> repartidor = cRepartidor;
+void Envio::setRepartidor(Repartidor& cRepartidor) {
+    this -> idRepartidor = cRepartidor.getIdentificacion();
 }
 
 void Envio::setCliente(Cliente cCliente) {
@@ -120,14 +116,14 @@ int Envio::leerFichero(string fichero) {
 }
 
 void Envio::mostrarinfo() {
-    cout << "El ID del envio es : " << this -> idEnvio << endl;
+    cout << "El ID del envio es : " << this -> id << endl;
     cout << "El estado de este envio es: " << this -> estado << endl;
 
     for (int i = 0; i < productos.size(); i++){
         cout << productos[i].getNombre() << "," << productos[i].getPrecio() << endl;
         cout << "Existen" << cantidad[i] << " unidades de este producto" << endl;
     }
-    cout << "El repartidor encargado de este envio es: " << repartidor.getNombre() << endl;
+    cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
 
