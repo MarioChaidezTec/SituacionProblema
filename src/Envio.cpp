@@ -120,9 +120,11 @@ void Envio::mostrarinfo() {
     cout << "El estado de este envio es: " << this -> estado << endl;
 
     for (int i = 0; i < productos.size(); i++){
-        cout << productos[i].getNombre() << "," << productos[i].getPrecio() << endl;
-        cout << "Existen" << cantidad[i] << " unidades de este producto" << endl;
+        cout << productos[i].getNombre() << endl;
+        cout << "Precio unitario: " << productos[i].getPrecio() << endl;
+        cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
     }
+
     cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
