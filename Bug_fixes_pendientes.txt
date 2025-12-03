@@ -1,3 +1,0 @@
-Linea 33 Repartidor.cpp Agregar this->
-Linea 38 Repartidor.cpp Agregar Repartidor::
-So  brecargar el operador ==
