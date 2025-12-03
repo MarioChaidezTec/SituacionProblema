@@ -33,7 +33,7 @@ public:
     void setPlacaVehiculo(string cPlacaVehiculo);
     int getLimiteEnvios();
     void setLimiteEnvios(int cLimiteEnvios);
-    vector<Envio> getListaEnvios();
+    vector<Envio>& getListaEnvios();
     
     void agregarEnvio(Envio& envio); // Agrega un envio al vector listaEnvios 
     void entregarEnvio(string id); // Borra el envio del vector listaEnvios
