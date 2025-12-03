@@ -126,8 +126,8 @@ void mostrarInfo() {
 }
 
 void cambiarEstado(){
+    cout << "Seleccione la ID de un repartidor" << endl;
     for (auto& repartidor: repartidores){
-        cout << "Seleccione la ID de un repartidor" << endl;
         cout << repartidor.getNombre() << " ID: " << repartidor.getIdentificacion();
     }
     string id;
@@ -150,6 +150,7 @@ void cambiarEstado(){
                 if (idEnvio == envio.getId()){
                     envioEncontrado = true;
                     repartidor.entregarEnvio(idEnvio);
+                    envio.cambiarEstado("Entregado");
                     cout << "Envio entregado" << endl;
                 } 
             }
