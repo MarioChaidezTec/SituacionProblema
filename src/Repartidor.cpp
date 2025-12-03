@@ -30,7 +30,7 @@ void Repartidor::entregarEnvio(string id){
         return;
     }
     int indice = estaEnvio(id);
-    if (!indice == -1) {
+    if (indice != -1) {
         listaEnvios.erase(listaEnvios.begin() + indice);
         cout << "Envio entregado" << endl;
     } else cout << "Envio no existe" << endl;
@@ -102,7 +102,7 @@ void Repartidor::setLimiteEnvios(int cLimiteEnvios) {
     this->limiteEnvios = cLimiteEnvios;
 }
 
-vector<Envio> Repartidor::getListaEnvios(){
+vector<Envio>& Repartidor::getListaEnvios(){
     return this->listaEnvios;
 }
 

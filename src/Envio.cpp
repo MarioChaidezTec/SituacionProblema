@@ -127,7 +127,7 @@ void Envio::mostrarinfo() {
         cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
     }
     cout << "---------------" << endl;
-    cout << "El costo total del envio es:" << calculartotal() << endl;
+    cout << "El costo total del envio es: " << calculartotal() << endl;
     cout << "El repartidor encargado de este envio es: " << this->idRepartidor << endl;
     cout << "El cliente asociado con este envio es: " << cliente.getNombre() << endl;
 }
