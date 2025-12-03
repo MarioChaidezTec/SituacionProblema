@@ -20,12 +20,12 @@ Envio::Envio() {
 }
 
 Envio::Envio(string cId, vector<Producto> cProductos, vector<int> cCantidad,
-             Repartidor& cRepartidor, Cliente cCliente) {
+             string cIdRepartidor, Cliente cCliente) {
     this -> id = cId;
     this -> estado = "No entregado";
     this -> productos  = cProductos;
     this -> cantidad = cCantidad;
-    this -> idRepartidor = cRepartidor.getIdentificacion();
+    this -> idRepartidor = cIdRepartidor;
     this -> cliente = cCliente;
 }
 
