@@ -26,18 +26,18 @@ void mostrarMenu() { //muestra el menu de gestion
 
 void crearEnvio() { //funcion para crear envio
     string id;
-    cout << "Ingrese una id: ";
-    cin >> id;
+    cout << "Ingrese una id: "<< endl;
+    getline(cin, id);
 
     string nombreCliente;
     cout << "Ingrese el nombre del cliente: ";
-    cin >> nombreCliente;
+    getline(cin, nombreCliente);
     string direccionCliente;
     cout << "Ingrese la direccion del cliente: ";
-    cin >> direccionCliente;
+    getline(cin, direccionCliente);
     string telefonoCliente;
     cout << "Ingrese el telefono del cliente: ";
-    cin >> telefonoCliente;
+    getline(cin, telefonoCliente);
 
     Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
     Envio envio(id, {}, {},repartidor1, cliente);
@@ -52,7 +52,7 @@ void agregarProducto() {
     }
     string id;
     cout << "Escribe el id del envio: " << endl;
-    cin >> id;
+    getline(cin, id);
 
     bool envioEncontrado = false;
     for (auto& envio : envios) {
@@ -60,7 +60,7 @@ void agregarProducto() {
             envioEncontrado = true;
             string fichero;
             cout << "Ingrese el fichero con los productos: " << endl;
-            cin >> fichero;
+            getline(cin, fichero);
             envio.leerFichero(fichero);
             cout << "Productos agregados" << endl;
         }
@@ -76,7 +76,7 @@ void eliminarProducto() {
     }
     string id;
     cout << "Escribe el id del envio: " << endl;
-    cin >> id;
+    getline(cin, id);
 
     bool envioEncontrado = false; 
     for (auto& envio : envios) {
@@ -89,7 +89,7 @@ void eliminarProducto() {
             }
             string nombre;
             cout << "Ingrese el nombre del producto a eliminar " << endl;
-            cin >> nombre;
+            getline(cin, nombre);
 
             bool productoEncontrado = false; 
             for (auto& producto : envio.getProductos()) {
@@ -113,7 +113,7 @@ void mostrarInfo() {
     }
     string id;
     cout << "Escribe el id del envio: " << endl;
-    cin >> id;
+    getline(cin, id);
 
     bool envioEncontrado = false;
     for (auto& envio : envios) {
@@ -131,7 +131,7 @@ void cambiarEstado(){
         cout << repartidor.getNombre() << " ID: " << repartidor.getIdentificacion() << endl;
     }
     string id;
-    cin >> id;
+    getline(cin, id);
 
     bool repartidorEncontrado = false;
     for(auto& repartidor: repartidores){
@@ -144,7 +144,8 @@ void cambiarEstado(){
                 i++;
             }
             string idEnvio;
-            cout << "Seleccione el ID del envio a entregar: " << endl; cin >> idEnvio;
+            cout << "Seleccione el ID del envio a entregar: " << endl;
+            getline(cin, idEnvio);
 
             bool envioEncontrado = false;
             for (auto& envio : envios){
@@ -168,7 +169,7 @@ void asignarRepartidor() {
     }
     string id;
     cout << "Escribe el id del envio: " << endl;
-    cin >> id;
+    getline(cin, id);
     int a = 0;
     for (auto& envio : envios) {
         if (envio.getId() == id) {
@@ -178,7 +179,8 @@ void asignarRepartidor() {
                 i++;
             }
             string identificacion;
-            cout << "Ingrese el id del repartidor: " << endl; cin >> identificacion;
+            cout << "Ingrese el id del repartidor: " << endl;
+            getline(cin, identificacion);
             for (auto &repartidor :repartidores) {
                 if (repartidor.getIdentificacion() == identificacion) {
                     repartidor.agregarEnvio(envios[a]);
@@ -198,6 +200,7 @@ int main(){
     while (opcion != 7) {
         mostrarMenu();
         cin >> opcion;
+        cin.ignore();
         switch (opcion) {
             case 1: crearEnvio();
                 break;
