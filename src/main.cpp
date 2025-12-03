@@ -7,9 +7,11 @@
 #include "Producto.h"
 using namespace std;
 
-Repartidor repartidor1;
+Repartidor repartidor1("Victor Arevalo", "VA8382", "NP300", "BAV323", 20);
+Repartidor repartidor2("Fercho", "FE2322", "Peugeot", "BAM32313", 25);
+Repartidor repartidor3("Gabriel Zebo", "GBO2342", "Lancha", "BWR23423", 10);
 vector<Envio> envios;
-vector<Repartidor> repartidores;
+vector<Repartidor> repartidores {repartidor1, repartidor2, repartidor3};
 
 void mostrarMenu() { //muestra el menu de gestion
     cout << "********** MENU DE GESTION DE ENVIOS **********" << endl;
@@ -43,8 +45,8 @@ void crearEnvio() { //funcion para crear envio
 }
 
 void agregarProducto() {
+    int i = 1;
     for (auto& envio : envios) {
-        int i = 1;
         cout << "Envio: " << i << " ID: " << envio.getId() << endl;
         i++;
     }
@@ -157,6 +159,37 @@ void cambiarEstado(){
     if (!repartidorEncontrado) cout << "Repartidor no encontrado" << endl;
 }
 
+void asignarRepartidor() {
+    for (auto& envio : envios) {
+        int i = 1;
+        cout << "Envio: " << i << " ID: " << envio.getId() << endl;
+        i++;
+    }
+    string id;
+    cout << "Escribe el id del envio: " << endl;
+    cin >> id;
+    int a = 0;
+    for (auto& envio : envios) {
+        if (envio.getId() == id) {
+            int i = 0;
+            for (auto& repartidor :repartidores) {
+                cout << i + 1 << "." << repartidores[i].getNombre() << " : " << repartidores[i].getIdentificacion() << endl;
+                i++;
+            }
+            string identificacion;
+            cout << "Ingrese el id del repartidor: " << endl; cin >> identificacion;
+            for (auto &repartidor :repartidores) {
+                if (repartidor.getIdentificacion() == identificacion) {
+                    repartidor.agregarEnvio(envios[a]);
+                    envio.setRepartidor(repartidor);
+                    cout << "Envio asignado" << endl;
+                    }
+                }
+        }
+        a++;
+    }
+}
+
 int main(){
 
     int opcion = 0;
@@ -174,6 +207,8 @@ int main(){
             case 4: mostrarInfo();
                 break;
             case 5: cambiarEstado();
+                break;
+            case 6: asignarRepartidor();
                 break;
             default: cout << "Opcion invalida" << endl;
         }
