@@ -6,6 +6,7 @@
 #include "Repartidor.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -104,13 +105,19 @@ int Envio::leerFichero(string fichero) {
         cout << "El archivo no se pudo abrir, porfavor utilize un archivo valido" << endl;
         return -1;
     }
-    string nombre;
-    float precio;
-    int cantidad1;
+    string linea;
+    while (getline(archivo, linea)){
+        stringstream ss(linea);
+        string nombre;
+        string strPrecio;
+        string strCantidad;
 
-    while (archivo >> nombre >> precio >> cantidad1){
-        productos.emplace_back(nombre, precio);
-        cantidad.push_back(cantidad1);
+        getline(ss, nombre, ',');
+        getline(ss, strPrecio, ',');
+        getline(ss, strCantidad);
+
+        productos.emplace_back(nombre, stof(strPrecio));
+        cantidad.push_back(stoi(strCantidad));
     }
     archivo.close();
     return 1;
