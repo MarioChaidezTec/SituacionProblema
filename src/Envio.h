@@ -21,7 +21,7 @@ public:
     // Constructores
     Envio();
     Envio(string cId, vector<Producto> cProductos,
-          vector<int> cCantidad, Repartidor& cRepartidor, Cliente cCliente);
+          vector<int> cCantidad, string cIdRepartidor, Cliente cCliente);
 
     // Getters
     string getId();

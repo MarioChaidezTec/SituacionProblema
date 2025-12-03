@@ -40,7 +40,7 @@ void crearEnvio() { //funcion para crear envio
     getline(cin, telefonoCliente);
 
     Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
-    Envio envio(id, {}, {},repartidor1, cliente);
+    Envio envio(id, {}, {}," ", cliente);
     envios.push_back(envio);
 }
 
