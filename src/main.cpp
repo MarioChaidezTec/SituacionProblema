@@ -42,6 +42,7 @@ void crearEnvio() { //funcion para crear envio
     Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
     Envio envio(id, {}, {}," ", cliente);
     envios.push_back(envio);
+    cout << "Envio creado" << endl;
 }
 
 void agregarProducto() {
@@ -61,8 +62,10 @@ void agregarProducto() {
             string fichero;
             cout << "Ingrese el fichero con los productos: " << endl;
             getline(cin, fichero);
-            envio.leerFichero(fichero);
-            cout << "Productos agregados" << endl;
+            if(envio.leerFichero(fichero) != -1){
+                cout << "Productos agregados" << endl;
+            }
+
         }
     }
     if (!envioEncontrado) cout << "Envio no encontrado" << endl;
