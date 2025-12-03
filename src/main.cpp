@@ -51,16 +51,19 @@ void agregarProducto() {
     string id;
     cout << "Escribe el id del envio: " << endl;
     cin >> id;
+
+    bool envioEncontrado = false;
     for (auto& envio : envios) {
         if (envio.getId() == id) {
+            envioEncontrado = true;
             string fichero;
             cout << "Ingrese el fichero con los productos: " << endl;
             cin >> fichero;
             envio.leerFichero(fichero);
             cout << "Productos agregados" << endl;
         }
-        else cout << "No se encuentra el ID del envio" << endl;
     }
+    if (!envioEncontrado) cout << "Envio no encontrado" << endl;
 }
 
 void eliminarProducto() {
@@ -109,12 +112,15 @@ void mostrarInfo() {
     string id;
     cout << "Escribe el id del envio: " << endl;
     cin >> id;
+
+    bool envioEncontrado = false;
     for (auto& envio : envios) {
         if (envio.getId() == id) {
+            envioEncontrado = true;
             envio.mostrarinfo();
         }
-        else cout << "No se encuentra el ID del envio" << endl;
     }
+    if (!envioEncontrado) cout << "Envio no encontrado" << endl;
 }
 
 void cambiarEstado(){
@@ -136,7 +142,7 @@ void cambiarEstado(){
             }
             string idEnvio;
             cout << "Seleccione el envio a entregar: " << endl; cin >> idEnvio;
-            
+
             bool envioEncontrado = false;
             for (auto& envio : repartidor.getListaEnvios()){
                 if (idEnvio == envio.getId()){
