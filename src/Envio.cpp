@@ -112,6 +112,7 @@ int Envio::leerFichero(string fichero) {
         productos.emplace_back(nombre, precio);
         cantidad.push_back(cantidad1);
     }
+    archivo.close();
     return 1;
 }
 
