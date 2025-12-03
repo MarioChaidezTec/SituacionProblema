@@ -7,7 +7,7 @@
 #include "Producto.h"
 using namespace std;
 
-Repartidor repartidor1("Victor Arevalo", "VA8382", "NP300", "BAV323", 20);
+Repartidor repartidor1("Victor Arevalo", "VA8382", "NP300", "BAV323", 1);
 Repartidor repartidor2("Fercho", "FE2322", "Peugeot", "BAM32313", 25);
 Repartidor repartidor3("Gabriel Zebo", "GBO2342", "Lancha", "BWR23423", 10);
 vector<Envio> envios;
@@ -183,9 +183,11 @@ void asignarRepartidor() {
             getline(cin, identificacion);
             for (auto &repartidor :repartidores) {
                 if (repartidor.getIdentificacion() == identificacion) {
-                    repartidor.agregarEnvio(envios[a]);
-                    envio.setRepartidor(repartidor);
-                    cout << "Envio asignado" << endl;
+                    if (repartidor.estaDisponible()) {
+                        repartidor.agregarEnvio(envios[a]);
+                        envio.setRepartidor(repartidor);
+                        cout << "Envio asignado" << endl;
+                    }else cout << "Repartidor no disponible, envio no asignado." << endl;
                     }
                 }
         }
