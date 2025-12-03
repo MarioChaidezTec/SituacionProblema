@@ -211,6 +211,7 @@ int main(){
                 break;
             case 6: asignarRepartidor();
                 break;
+            case 7: return 0;
             default: cout << "Opcion invalida" << endl;
         }
     }
