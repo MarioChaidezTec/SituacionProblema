@@ -153,6 +153,10 @@ void cambiarEstado(){
             bool envioEncontrado = false;
             for (auto& envio : envios){
                 if (idEnvio == envio.getId()){
+                    if (envio.getRepartidor() != " "){
+                        cout << "El envio ya tiene un repartidor" << endl;
+                        return; 
+                    }
                     envioEncontrado = true;
                     repartidor.entregarEnvio(idEnvio);
                     envio.cambiarEstado("Entregado");
