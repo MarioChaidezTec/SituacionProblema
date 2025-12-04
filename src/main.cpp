@@ -110,7 +110,7 @@ void eliminarProducto() {
 
 void mostrarInfo() {
     int i = 1;
-    for (auto& envio : envios) {
+    for (auto &envio : envios) {
         cout << "Envio: " << i << " ID: " << envio.getId() << endl;
         i++;
     }
