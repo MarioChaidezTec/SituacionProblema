@@ -191,6 +191,9 @@ void asignarRepartidor() {
                         envio.setRepartidor(repartidor);
                         cout << "Envio asignado" << endl;
                     }else cout << "Repartidor no disponible, envio no asignado." << endl;
+                    } else {
+                        cout << "Repartidor no encontrado." << endl;
+                        return;
                     }
                 }
         }
