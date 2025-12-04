@@ -15,6 +15,6 @@ El programa consiste en un sistema de gestión de envíos. Se crea un envío el 
 + Descargar el ejecutable
 + Tener ficheros en formato .csv con listas de productos en formato (Nombre, precio unitario, cantidad)
 ## Autores
-+ Luis Emiliano Acuña Rodriguez
-+ Mario Chaidez Martinez
-+ Gustavo Cordova Garcia
++ Luis Emiliano Acuña Rodriguez -> contactar a a01254706@tec.mx
++ Mario Chaidez Martinez -> contactar a a01255330@tec.mx
++ Gustavo Cordova Garcia -> contactar a guscordova06@gmail.com
