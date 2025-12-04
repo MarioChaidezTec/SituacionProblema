@@ -195,39 +195,37 @@ void asignarRepartidor() {
                         envio.setRepartidor(repartidor);
                         cout << "Envio asignado" << endl;
                     }else cout << "Repartidor no disponible, envio no asignado." << endl;
-                    } else {
-                        cout << "Repartidor no encontrado." << endl;
-                        return;
+                    }
                     }
                 }
         }
         a++;
     }
-}
 
 int main(){
 
-    int opcion = 0;
+    string opcion;
 
-    while (opcion != 7) {
+    while (opcion != "7") {
         mostrarMenu();
         cin >> opcion;
         cin.ignore();
-        switch (opcion) {
-            case 1: crearEnvio();
-                break;
-            case 2: agregarProducto();
-                break;
-            case 3: eliminarProducto();
-                break;
-            case 4: mostrarInfo();
-                break;
-            case 5: cambiarEstado();
-                break;
-            case 6: asignarRepartidor();
-                break;
-            case 7: return 0;
-            default: cout << "Opcion invalida" << endl;
+        if (opcion == "1") {
+            crearEnvio();
+        } else if (opcion == "2") {
+            agregarProducto();
+        } else if (opcion == "3") {
+            eliminarProducto();
+        } else if (opcion == "4") {
+            mostrarInfo();
+        } else if (opcion == "5") {
+            cambiarEstado();
+        } else if (opcion == "6") {
+            asignarRepartidor();
+        } else if (opcion == "7") {
+            return 0;
+        } else {
+            cout << "Opcion invalida" << endl;
         }
     }
 
