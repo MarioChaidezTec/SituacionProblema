@@ -17,7 +17,7 @@ void mostrarMenu() { //muestra el menu de gestion
     cout << "********** MENU DE GESTION DE ENVIOS **********" << endl;
     cout << "1. Crear envio" << endl;
     cout << "2. Agregar producto" << endl;
-    cout << "3. Elmininar producto" << endl;
+    cout << "3. Elimininar producto" << endl;
     cout << "4. Mostrar informacion" << endl;
     cout << "5. Cambiar el estado" << endl;
     cout << "6. Asignar repartidor a un envio" << endl;
