@@ -17,7 +17,7 @@ void mostrarMenu() { //muestra el menu de gestion
     cout << "********** MENU DE GESTION DE ENVIOS **********" << endl;
     cout << "1. Crear envio" << endl;
     cout << "2. Agregar producto" << endl;
-    cout << "3. Elmininar producto" << endl;
+    cout << "3. Eliminar producto" << endl;
     cout << "4. Mostrar informacion" << endl;
     cout << "5. Cambiar el estado" << endl;
     cout << "6. Asignar repartidor a un envio" << endl;
@@ -42,6 +42,7 @@ void crearEnvio() { //funcion para crear envio
     Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
     Envio envio(id, {}, {}," ", cliente);
     envios.push_back(envio);
+    cout << "Envio creado" << endl;
 }
 
 void agregarProducto() {
@@ -61,8 +62,10 @@ void agregarProducto() {
             string fichero;
             cout << "Ingrese el fichero con los productos: " << endl;
             getline(cin, fichero);
-            envio.leerFichero(fichero);
-            cout << "Productos agregados" << endl;
+            if(envio.leerFichero(fichero) != -1){
+                cout << "Productos agregados" << endl;
+            }
+
         }
     }
     if (!envioEncontrado) cout << "Envio no encontrado" << endl;
@@ -173,6 +176,10 @@ void asignarRepartidor() {
     int a = 0;
     for (auto& envio : envios) {
         if (envio.getId() == id) {
+            if (envio.getRepartidor() != " "){
+                    cout << "El envio ya tiene un repartidor" << endl;
+                    return; 
+                    }
             int i = 0;
             for (auto& repartidor :repartidores) {
                 cout << i + 1 << "." << repartidores[i].getNombre() << " : " << repartidores[i].getIdentificacion() << endl;
@@ -189,35 +196,36 @@ void asignarRepartidor() {
                         cout << "Envio asignado" << endl;
                     }else cout << "Repartidor no disponible, envio no asignado." << endl;
                     }
+                    }
                 }
         }
         a++;
     }
-}
 
 int main(){
 
-    int opcion = 0;
+    string opcion;
 
-    while (opcion != 7) {
+    while (opcion != "7") {
         mostrarMenu();
         cin >> opcion;
         cin.ignore();
-        switch (opcion) {
-            case 1: crearEnvio();
-                break;
-            case 2: agregarProducto();
-                break;
-            case 3: eliminarProducto();
-                break;
-            case 4: mostrarInfo();
-                break;
-            case 5: cambiarEstado();
-                break;
-            case 6: asignarRepartidor();
-                break;
-            case 7: return 0;
-            default: cout << "Opcion invalida" << endl;
+        if (opcion == "1") {
+            crearEnvio();
+        } else if (opcion == "2") {
+            agregarProducto();
+        } else if (opcion == "3") {
+            eliminarProducto();
+        } else if (opcion == "4") {
+            mostrarInfo();
+        } else if (opcion == "5") {
+            cambiarEstado();
+        } else if (opcion == "6") {
+            asignarRepartidor();
+        } else if (opcion == "7") {
+            return 0;
+        } else {
+            cout << "Opcion invalida" << endl;
         }
     }
 
