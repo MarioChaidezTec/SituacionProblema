@@ -10,11 +10,13 @@ using namespace std;
 Producto::Producto() {
     this -> nombre = " ";
     this -> precio = 0;
+    this -> cantidad = 0;
 }
 
-Producto::Producto(string cNombre, float cPrecio) {
+Producto::Producto(std::string cNombre, float cPrecio, int cCantidad) {
     this -> nombre = cNombre;
     this -> precio = cPrecio;
+    this -> cantidad = cCantidad;
 }
 
 string Producto::getNombre() {
@@ -25,12 +27,20 @@ float Producto::getPrecio() {
     return this -> precio;
 }
 
+int Producto::getCantidad() {
+    return this -> cantidad;
+}
+
 void Producto::setNombre(string cNombre) {
     this -> nombre = cNombre;
 }
 
 void Producto::setPrecio(float cPrecio) {
     this -> precio = cPrecio;
+}
+
+void Producto::setCantidad(int cCantidad) {
+    this -> cantidad = cCantidad;
 }
 
 Producto::~Producto() {}
