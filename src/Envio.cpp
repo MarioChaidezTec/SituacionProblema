@@ -14,17 +14,15 @@ Envio::Envio() {
     this -> id = " ";
     this -> estado = "No entregado";
     this -> productos;
-    this -> cantidad;
     this -> idRepartidor = " ";
     this -> cliente;
 }
 
-Envio::Envio(string cId, vector<Producto> cProductos, vector<int> cCantidad,
+Envio::Envio(string cId, vector<Producto> cProductos,
              string cIdRepartidor, Cliente cCliente) {
     this -> id = cId;
     this -> estado = "No entregado";
     this -> productos  = cProductos;
-    this -> cantidad = cCantidad;
     this -> idRepartidor = cIdRepartidor;
     this -> cliente = cCliente;
 }
@@ -41,9 +39,6 @@ vector<Producto> Envio::getProductos() {
     return this -> productos;
 }
 
-int Envio::getCantidad() {
-    return this -> cantidad.size();
-}
 
 string Envio::getRepartidor() {
     return this -> idRepartidor;
@@ -61,9 +56,6 @@ void Envio::setProductos(vector<Producto> cProducto) {
     this -> productos = cProducto;
 }
 
-void Envio::setCantidad(vector<int> cCantidad) {
-    this -> cantidad = cCantidad;
-}
 
 void Envio::setRepartidor(Repartidor& cRepartidor) {
     this -> idRepartidor = cRepartidor.getIdentificacion();
@@ -73,16 +65,14 @@ void Envio::setCliente(Cliente cCliente) {
     this -> cliente = cCliente;
 }
 
-void Envio::agregarProducto(string nombre, float precio, int cCantidad) {
-    productos.emplace_back(nombre, precio);
-    cantidad.push_back(cCantidad);
+void Envio::agregarProducto(string nombre, float precio, int cantidad) {
+    productos.emplace_back(nombre, precio, cantidad);
 }
 
 void Envio::eliminarProducto(string nombre) {
     for (int i = 0; i < productos.size(); i++){
         if (productos[i].getNombre() == nombre){
             productos.erase(productos.begin() + i);
-            cantidad.erase(cantidad.begin() + i);
         }
     }
 }
@@ -90,7 +80,7 @@ void Envio::eliminarProducto(string nombre) {
 double Envio::calculartotal() {
     double total = 0;
     for (int i = 0; i < productos.size(); i++){
-        total += productos[i].getPrecio() * cantidad[i];
+        total += productos[i].getPrecio() * productos[i].getCantidad();
     }
     return total;
 }
@@ -116,8 +106,7 @@ int Envio::leerFichero(string fichero) {
         getline(ss, strPrecio, ',');
         getline(ss, strCantidad);
 
-        productos.emplace_back(nombre, stof(strPrecio));
-        cantidad.push_back(stoi(strCantidad));
+        productos.emplace_back(nombre, stof(strPrecio), stoi(strCantidad));
     }
     archivo.close();
     return 1;
@@ -131,7 +120,7 @@ void Envio::mostrarinfo() {
     for (int i = 0; i < productos.size(); i++){
         cout << productos[i].getNombre() << endl;
         cout << "Precio unitario: " << productos[i].getPrecio() << endl;
-        cout << "Existen " << cantidad[i] << " unidades de este producto" << endl;
+        cout << "Existen " << productos[i].getCantidad() << " unidades de este producto" << endl;
         cout << "----------------" << endl;
     }
     cout << "El costo total del envio es: " << calculartotal() << endl;
