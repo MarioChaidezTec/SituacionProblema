@@ -39,8 +39,8 @@ void crearEnvio() { //funcion para crear envio
     cout << "Ingrese el telefono del cliente: ";
     getline(cin, telefonoCliente);
 
-    Cliente cliente(nombreCliente,direccionCliente,telefonoCliente);
-    Envio envio(id, {}, {}," ", cliente);
+    Cliente cliente(nombreCliente, direccionCliente, telefonoCliente);
+    Envio envio(id, cliente);
     envios.push_back(envio);
     cout << "Envio creado" << endl;
 }
@@ -176,10 +176,10 @@ void asignarRepartidor() {
     int a = 0;
     for (auto& envio : envios) {
         if (envio.getId() == id) {
-            if (envio.getRepartidor() != " "){
-                    cout << "El envio ya tiene un repartidor" << endl;
-                    return; 
-                    }
+            if (!envio.getRepartidor().empty()){
+                cout << "El envio ya tiene un repartidor" << endl;
+                return;
+            }
             int i = 0;
             for (auto& repartidor :repartidores) {
                 cout << i + 1 << "." << repartidores[i].getNombre() << " : " << repartidores[i].getIdentificacion() << endl;
@@ -195,12 +195,12 @@ void asignarRepartidor() {
                         envio.setRepartidor(repartidor);
                         cout << "Envio asignado" << endl;
                     }else cout << "Repartidor no disponible, envio no asignado." << endl;
-                    }
-                    }
                 }
+            }
         }
-        a++;
     }
+    a++;
+}
 
 int main(){
 
