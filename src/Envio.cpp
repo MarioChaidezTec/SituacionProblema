@@ -11,20 +11,28 @@
 using namespace std;
 
 Envio::Envio() {
-    this -> id = " ";
-    this -> estado = "No entregado";
-    this -> productos;
-    this -> idRepartidor = " ";
-    this -> cliente;
+    this->id = "";
+    this->estado = "No entregado";
+    this->idRepartidor = "";
+    // productos y cliente se inicializan automáticamente con sus constructores por defecto
 }
 
+// Constructor simplificado
+Envio::Envio(string cId, Cliente cCliente) {
+    this->id = cId;
+    this->estado = "No entregado";
+    this->cliente = cCliente;
+    this->idRepartidor = "";
+}
+
+// Constructor completo
 Envio::Envio(string cId, vector<Producto> cProductos,
              string cIdRepartidor, Cliente cCliente) {
-    this -> id = cId;
-    this -> estado = "No entregado";
-    this -> productos  = cProductos;
-    this -> idRepartidor = cIdRepartidor;
-    this -> cliente = cCliente;
+    this->id = cId;
+    this->estado = "No entregado";
+    this->productos = cProductos;
+    this->idRepartidor = cIdRepartidor;
+    this->cliente = cCliente;
 }
 
 string Envio::getId() {
